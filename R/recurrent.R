@@ -109,7 +109,7 @@
 #' # Null model
 #' ndf_null <- ped %>%
 #'    make_newdata(tend = unique(tend)) %>%
-#'    add_hazard(m_null, exclude = c("s(id)"))#'
+#'    add_hazard(m_null, exclude = c("s(id)"))
 #' p_null = ggplot(ndf_null, aes(x = tend, y = hazard)) +
 #'   geom_line() +
 #'   geom_ribbon(aes(ymin = ci_lower, ymax = ci_upper), alpha = .3) +
