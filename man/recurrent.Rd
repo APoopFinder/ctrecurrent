@@ -44,6 +44,7 @@ The returned dataframe can be directly used for recurrent event analysis.
 \dontrun{
 library(dplyr)
 library(pammtools)
+library(ggplot2)
 
 ####
 # Data Formating
@@ -111,11 +112,12 @@ summary(m_tv)
 # Null model
 ndf_null <- ped \%>\%
    make_newdata(tend = unique(tend)) \%>\%
-   add_hazard(m_null, exclude = c("s(id)"))#'
+   add_hazard(m_null, exclude = c("s(id)"))
 p_null = ggplot(ndf_null, aes(x = tend, y = hazard)) +
   geom_line() +
   geom_ribbon(aes(ymin = ci_lower, ymax = ci_upper), alpha = .3) +
-  xlab("Time after white-tailed deer (day)") + ylab(~paste("Event number.Day"^-1,".Camera-Trap"^-1))
+  xlab("Time after white-tailed deer (day)") +
+  ylab(~paste("Coyote event number.Day"^-1,".Camera-Trap"^-1))
 print(p_null)
 
 # Time-varying covariate effect
@@ -126,7 +128,8 @@ p_tv = ggplot(ndf_tv, aes(x = tend, y = hazard, colour = matrix)) +
   geom_line() +
   geom_ribbon(aes(ymin = ci_lower, ymax = ci_upper), alpha = .3) +
   scale_color_manual(values = c("#999999", "#E69F00"))  +
-  xlab("Time after white-tailed deer (day)") + ylab(~paste("Event number.Day"^-1,".Camera-Trap"^-1))
+  xlab("Time after white-tailed deer (day)") +
+  ylab(~paste("Coyote event number.Day"^-1,".Camera-Trap"^-1))
 print(p_tv)
 
 }
