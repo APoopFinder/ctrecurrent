@@ -15,42 +15,17 @@ knitr::opts_chunk$set(
 
 # ctrecurrent
 
-<!-- badges: start -->
-<!-- badges: end -->
 
 The goal of ctrecurrent is to transform the camera trap data into a format suitable for recurrent event analysis. It contains the function recurrent() to do so, requiring a dataframe with the following information for each observation: Site ID, Timestamp (Date and Time) and Species.
 
 ## Installation
 
-You can install the development version of ctrecurrent from [GitHub](https://github.com/) with:
+You can install the development version of ctrecurrent from the R-cran or from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("APoopFinder/ctrecurrent")
 ```
 
-## Example
 
-```{r example, message=FALSE, warning=FALSE}
-library(ctrecurrent)
-library(dplyr)
-
-# See data's vignette for details
-df = Murphy2021_ct_data
-
-# Define the pool of primary species (affecting secondary species, stopping the survey if observed)
-Primary = c("Fawn", "Deer", "Bear", "Bobcat", "Human", "Motorized")
-
-# Define the secondary species (affected bby the primary species, only one)
-Secondary = c("Coyote")
-
-# Define the end of study
-End_survey = max(df$DateTime)
-
-# Convert into recurrent event
-recu = recurrent(df, Primary, Secondary, End_survey, survey_duration = 7)
-
-# Select only one primary species for recurrent event analysis
-recu_deer = recu %>% filter(Primary == "Deer")
-head(recu_deer)
 ```

@@ -20,3 +20,7 @@ Imports:
     dplyr,
     lubridate,
     magrittr
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
