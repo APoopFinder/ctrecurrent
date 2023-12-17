@@ -1,12 +1,12 @@
 Package: ctrecurrent
-Title: Convert camera trap data structure into recurrent event format
+Title: Convert Camera Trap Data Structure Into Recurrent Event Format
 Version: 0.1.0
 Authors@R: c(
     person("Nicolas", "Ferry", , "ferrynicolas@me.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5191-9648")),
     person(family = "Bavarian Forest National Park Administration", 
          role = "cph"))
-Description: The package helps to convert camera trap data (site, timestamp, species) into a recurrent event format suited for recurrent event analyses.  
+Description: Converts camera trap data (site, timestamp, species) into a recurrent event format suited for recurrent event analyses.  
  It requires to specify which species (primary, one or more) affect the other (secondary, only one) and the maximum duration of a survey (d).  
  For each observation of the primary species, the function creates a survey during which all observations of the secondary species are recorded (i.e. the recurrent events), indicating the time of the previous event (t.start) and the time since the beginning of the survey (t.stop).
 License: GPL (>= 3)
